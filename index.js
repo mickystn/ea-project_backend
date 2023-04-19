@@ -373,6 +373,9 @@ app.put("/updateuUserinfo", (req, res) => {
   
 });
 
+app.get('/',(req,res)=>{
+    res.send("test yedmae")
+})
 
 app.listen(3001, () => {
   console.log("Yey, your server is running on port 3001");
