@@ -49,7 +49,7 @@ app.get("/port", (req, res) => {
 
 
 const responder = zmq.socket("rep");
-responder.bind("https://fuckdog.vercel.app");
+responder.bind("api-ea.vercel.app:3030");
 responder.on("message",function(msg){
   console.log(msg.toString());
   db.query('SELECT port_number FROM `port` WHERE `port_number`=?',
@@ -68,7 +68,7 @@ responder.on("message",function(msg){
 })
 
 const responderData = zmq.socket("rep");
-responderData.bind("https://fuckdog.vercel.app:7000");
+responderData.bind("api-ea.vercel.app:7000");
 responderData.on("message",function(msg){
   console.log(msg.toString());
   var profit = JSON.parse(msg.toString())[0].Profit;
