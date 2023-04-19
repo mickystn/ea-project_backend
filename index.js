@@ -49,7 +49,7 @@ app.get("/port", (req, res) => {
 
 
 const responder = zmq.socket("rep");
-responder.bind("https://fuckdog.vercel.app:3030");
+responder.bind("https://fuckdog.vercel.app");
 responder.on("message",function(msg){
   console.log(msg.toString());
   db.query('SELECT port_number FROM `port` WHERE `port_number`=?',
