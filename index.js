@@ -203,16 +203,6 @@ app.post("/addport",(req,res) => {
   
 });
 
-app.get("/transaction/:id", (req, res) => {
-  const portnum= req.params.id;
-  db.query(`SELECT * FROM transaction WHERE port_number=? `, portnum,(err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(result);
-    }
-  });
-});
 app.get("/userid/:id",(req,res)=>{
   const portnum= req.params.id;
   db.query('SELECT * FROM `user` INNER JOIN `port` ON user.user_id=port.user_id WHERE port.port_number=?'
