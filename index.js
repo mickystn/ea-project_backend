@@ -47,7 +47,7 @@ app.get("/port", (req, res) => {
   });
 });
 app.get("/allport",(req,res)=>{
-  db.query(`SELECT * FROM `user` INNER JOIN `port` ON user.user_id=port.user_id`,(err,result)=>{
+  db.query("SELECT * FROM `user` INNER JOIN `port` ON user.user_id=port.user_id",(err,result)=>{
     if(err){
       console.log(err);
     }else{
