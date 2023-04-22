@@ -172,7 +172,7 @@ app.post("/signin",(req,res) => {
   );
 });
 app.post("/test",(req, res) => {
-  const str ="micky"
+  const str ="mickdy"
   const data = req.body.post;
   res.send({msg:str,test:data})
 })
