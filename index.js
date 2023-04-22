@@ -174,7 +174,7 @@ app.post("/signin",(req,res) => {
 });
 app.post("/test",(req, res) => {
   const str ="mickdy"
-  console.log(req);
+  console.log(req.body.port);
 
   res.send();
 })
