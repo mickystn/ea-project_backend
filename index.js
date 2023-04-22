@@ -46,7 +46,15 @@ app.get("/port", (req, res) => {
     }
   });
 });
-
+app.get("/allport",(req,res)=>{
+  db.query(`SELECT * FROM `user` INNER JOIN `port` ON user.user_id=port.user_id`,(err,result)=>{
+    if(err){
+      console.log(err);
+    }else{
+      res.send(result)
+    }
+  })
+})
 
 app.post("/register",(req,res) => {
   const username = req.body.username;
@@ -195,17 +203,6 @@ app.post("/addport",(req,res) => {
   
 });
 
-app.get("/uid/:id",(req,res)=>{
-  const uid= req.params.id;
-  db.query('SELECT * FROM `user` INNER JOIN `port` ON user.user_id=port.user_id WHERE port.user_id=?',uid,(err,result) => {
-    if(err){
-      console.log(err);
-    }else{
-      console.log(result);
-    }
-  })
-
-})
 
 app.get("/userid/:id",(req,res)=>{
   const portnum= req.params.id;
