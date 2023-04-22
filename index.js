@@ -91,6 +91,10 @@ responderData.on("message",function(msg){
   )
 })
 
+app.post("/test",(req, res) => {
+  console.log("/test");
+})
+
 app.post("/register",(req,res) => {
   const username = req.body.username;
   const email = req.body.email;
