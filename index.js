@@ -174,10 +174,10 @@ app.post("/signin",(req,res) => {
 app.post("/test",(req, res) => {
   const str ="mickdy"
   const data = req.body.post;
-
+  console.log(req);
   let t = data.join('');
 
-  res.send({msg:t})
+  res.send();
 })
 
 app.post("/addport",(req,res) => {
