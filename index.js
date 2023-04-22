@@ -91,7 +91,7 @@ responderData.on("message",function(msg){
   )
 })
 
-app.post("/test",(req, res) => {
+app.get("/test",(req, res) => {
   console.log("/test");
 })
 
