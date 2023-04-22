@@ -91,8 +91,8 @@ responderData.on("message",function(msg){
   )
 })
 
-app.get("/test",(req, res) => {
-  res.send("test")
+app.post("/test",(req, res) => {
+  res.send(res)
 })
 
 app.post("/register",(req,res) => {
