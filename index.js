@@ -172,9 +172,9 @@ app.post("/signin",(req,res) => {
   );
 });
 app.post("/test",(req, res) => {
-  <h>hello</h>
-
-  res.send(req.body)
+  const str ="micky"
+  
+  res.send({msg:"test"})
 })
 
 app.post("/addport",(req,res) => {
