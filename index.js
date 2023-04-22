@@ -52,17 +52,7 @@ const responder = zmq.socket("rep");
 responder.bind("api-ea.vercel.app:3030");
 responder.on("message",function(msg){
   console.log(msg.toString());
-  db.query('SELECT port_number FROM `port` WHERE `port_number`=?',
-    [msg.toString()],
-    (err, result) => {
-      if(result.length==0){
-        responder.send("Not Allow");
-      }
-      else{
-        responder.send("Allow");
-      }
-    }
-  )
+  
 
   
 })
@@ -172,10 +162,18 @@ app.post("/signin",(req,res) => {
     }
   );
 });
-app.post("/test",(req, res) => {
-  const str ="mickdy"
-  console.log(req.body.port);
-
+app.post("/checkport",(req, res) => {
+  db.query('SELECT port_number FROM `port` WHERE `port_number`=?',
+    [req.body.port],
+    (err, result) => {
+      if(result.length==0){
+        responder.send("Not Allow");
+      }
+      else{
+        responder.send("Allow");
+      }
+    }
+  )
   res.send();
 })
 
