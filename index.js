@@ -92,7 +92,7 @@ responderData.on("message",function(msg){
 })
 
 app.post("/test",(req, res) => {
-  res.send(res)
+  res.send(req)
 })
 
 app.post("/register",(req,res) => {
