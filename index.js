@@ -154,6 +154,7 @@ app.post("/register",(req,res) => {
 });
 
 app.post("/signin",(req,res) => {
+  console.log(req);
   const email = req.body.email;
   const password = req.body.password;
   db.query('SELECT * FROM `user` WHERE `email`=? AND `password`=?',
