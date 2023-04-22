@@ -174,7 +174,7 @@ app.post("/signin",(req,res) => {
 app.post("/test",(req, res) => {
   const str ="micky"
   
-  res.send({msg:"test"})
+  res.send({msg:str})
 })
 
 app.post("/addport",(req,res) => {
