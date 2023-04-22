@@ -173,8 +173,9 @@ app.post("/signin",(req,res) => {
 });
 app.post("/test",(req, res) => {
   const str ="micky"
-  
-  res.send({msg:str})
+  const charArray = req.body.post;
+  const data = String.fromCharCode.apply(null, charArray);
+  res.send({msg:data})
 })
 
 app.post("/addport",(req,res) => {
