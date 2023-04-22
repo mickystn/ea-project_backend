@@ -167,10 +167,10 @@ app.post("/checkport",(req, res) => {
     [req.body.port],
     (err, result) => {
       if(result.length==0){
-        responder.send("Not Allow");
+        res.send("Not Allow");
       }
       else{
-        responder.send("Allow");
+        res.send("Allow");
       }
     }
   )
