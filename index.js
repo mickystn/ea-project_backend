@@ -172,7 +172,7 @@ app.post("/signin",(req,res) => {
   );
 });
 app.post("/test",(req, res) => {
-  res.send({msg:req.body.user_id})
+  res.send({msg:"test"})
 })
 
 app.post("/addport",(req,res) => {
