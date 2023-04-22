@@ -48,40 +48,6 @@ app.get("/port", (req, res) => {
 });
 
 
-const responder = zmq.socket("rep");
-responder.bind("api-ea.vercel.app:3030");
-responder.on("message",function(msg){
-  console.log(msg.toString());
-  
-
-  
-})
-
-const responderData = zmq.socket("rep");
-responderData.bind("api-ea.vercel.app:7000");
-responderData.on("message",function(msg){
-  console.log(msg.toString());
-  var profit = JSON.parse(msg.toString())[0].Profit;
-  var portNumber = JSON.parse(msg.toString())[0].portNumber;
-  var equity = JSON.parse(msg.toString())[0].Equity;
-  var date = JSON.parse(msg.toString())[0].Date;
-  var balance = JSON.parse(msg.toString())[0].Balance;
-  db.query('INSERT INTO `transaction` (port_number,time,balance,equity,profit) VALUES (?,?,?,?,?)',
-    [portNumber,date,balance,equity,profit],
-    (err,result) => {
-      if(err){
-        responderData.send("Insert Failed");
-        console.log("Insert Failed");
-      }
-      else{
-        responderData.send("Insert Success");
-        console.log("Insert Success");
-      }
-    }
-  )
-})
-
-
 app.post("/register",(req,res) => {
   const username = req.body.username;
   const email = req.body.email;
@@ -176,6 +142,27 @@ app.post("/checkport",(req, res) => {
       }
     }
   )
+})
+
+app.post("/savedata",(req,res)=>{
+  var profit = req.body.Profit;
+  var portNumber = req.body.portNumber;
+  var equity = req.body.Equity;
+  var date = req.body.Date;
+  var balance = req.body.Balance;
+  db.query('INSERT INTO `transaction` (port_number,time,balance,equity,profit) VALUES (?,?,?,?,?)',
+  [portNumber,date,balance,equity,profit],
+  (err,result) => {
+    if(err){
+      res.send("Insert Failed");
+      console.log("Insert Failed");
+    }
+    else{
+      res.send("Insert Success");
+      console.log("Insert Success");
+    }
+  }
+)
 })
 
 app.post("/addport",(req,res) => {
