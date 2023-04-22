@@ -91,9 +91,6 @@ responderData.on("message",function(msg){
   )
 })
 
-app.post("/test",(req, res) => {
-  res.send(req)
-})
 
 app.post("/register",(req,res) => {
   const username = req.body.username;
@@ -174,6 +171,10 @@ app.post("/signin",(req,res) => {
     }
   );
 });
+app.post("/test",(req, res) => {
+  res.send({msg:"test"})
+})
+
 app.post("/addport",(req,res) => {
   const Userid = req.body.Userid;
   const portnumber = req.body.portnumber;
