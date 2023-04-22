@@ -174,8 +174,7 @@ app.post("/signin",(req,res) => {
 app.post("/test",(req, res) => {
   const str ="micky"
   const data = req.body.post;
-  const dataString = CharArrayToString(data);
-  res.send({msg:dataString})
+  res.send({msg:str,test:data})
 })
 
 app.post("/addport",(req,res) => {
