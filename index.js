@@ -172,7 +172,8 @@ app.post("/signin",(req,res) => {
   );
 });
 app.post("/test",(req, res) => {
-  res.send({msg:"test"})
+  <h>hello</h>
+  res.send({msg:req})
 })
 
 app.post("/addport",(req,res) => {
