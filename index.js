@@ -218,6 +218,18 @@ app.get("/userid/:id",(req,res)=>{
   )
 })
 
+app.delete("/deleteUser/:id",(req,res)=>{
+  const id = req.params.id;
+  db.query('DELETE FROM `user` WHERE `user_id`=?',id,(err,result)=>{
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.send(result);
+    }
+  })
+})
+
 app.delete("/deleteport/:id", (req, res) => {
   const portnum = req.params.id;
   console.log(portnum);
@@ -273,6 +285,7 @@ app.delete("/deletetran/:id", (req, res) => {
   
 });
 
+/*
 app.delete("/deleteuser/:id", (req, res) => {
   const userid = req.params.id;
   console.log(userid);
@@ -303,7 +316,7 @@ app.delete("/deleteuser/:id", (req, res) => {
   
 });
 
-
+*/
 app.delete("/deleteOneport/:id", (req, res) => {
   const portnum = req.params.id;
   console.log(portnum);
