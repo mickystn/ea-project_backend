@@ -9,11 +9,11 @@ app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
-    user: "root",
-    host: "eaprojectdb.csxxfbi7aaia.ap-southeast-1.rds.amazonaws.com",
-    password: "mannmixx2110",
-    database: "db",
-  });
+  user:process.env.DB_USER,
+  host: process.env.DB_HOST,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+});
 app.get("/user", (req, res) => {
   //เลือกมาหมดยกเว้น แอดมิน
   db.query("SELECT * FROM user  WHERE `user_name`!='admin'", (err, result) => {
